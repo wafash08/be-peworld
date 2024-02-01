@@ -14,7 +14,7 @@ const findByEmail = (email, {relation} = {relation: ''}) => {
   console.log(relation);
   return new Promise((resolve, reject) => {
     pool.query(
-      `SELECT * FROM users ${relation ? `JOIN ${relation} ON users.id = user_id`: ''} WHERE email = $1 `,
+      `SELECT users.id AS user_id, users.email, users.role_id, users.password ${relation ? `, ${relation}.*`:''} FROM users ${relation ? ` JOIN ${relation} ON users.id = user_id`: ''} WHERE email = $1 `,
       [email],
       (error, result) => {
         if (!error) {

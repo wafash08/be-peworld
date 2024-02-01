@@ -48,7 +48,7 @@ const update = async (req, res, next) => {
       workplace,
       description,
     };
-    await workers.update(data, user.id);
+    await workers.update(data, user.user_id);
     response(res, data, 200, "update profile workers success ");
     
   } catch (error) {

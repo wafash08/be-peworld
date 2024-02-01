@@ -9,6 +9,7 @@ const login = async(req, res, next)=>{
     const { email, password } = req.body
     const { rows: [user] } = await users.findByEmail(email)
     // const user = rows[0]
+    console.log(user);
     if (!user) {
       return commonHelper.response(res, null, 403, 'email atau password anda salah')
     }
