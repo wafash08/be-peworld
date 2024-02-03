@@ -26,8 +26,14 @@ const findByEmail = (email, {relation} = {relation: ''}) => {
     );
   });
 };
-
+const updateEmail = ({email}, id) =>{
+  return pool.query(
+    "UPDATE users SET email = $1 WHERE id = $2",
+    [email, id]
+  );
+}
 module.exports = {
   create,
-  findByEmail
+  findByEmail,
+  updateEmail
 }
