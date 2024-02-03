@@ -1,20 +1,19 @@
 const pool = require("../config/db");
 
-const selectAll = ({id}) =>{
-  console.log(id);
-  return pool.query("SELECT skills.id, skills.skill_name, skills.created_at, skills.updated_at FROM skills WHERE worker_id = $1", [id])
+const selectAll = ({worker_id}) =>{
+  return pool.query("SELECT id,  position, company, work_month, work_year, description created_at, updated_at FROM work_experience WHERE worker_id = $1", [worker_id])
 }
 
-const drop = (id)=>{
+const drop = ({id})=>{
   return pool.query(
-    "DELETE FROM skills WHERE id = $1", 
+    "DELETE FROM work_experience WHERE id = $1", 
     [id]
   );
 }
-const create = ({id, workerId, skillName})=>{
+const create = ({id, worker_id, position, company, work_month, work_year, description})=>{
   return pool.query(
-    "INSERT INTO skills(id, worker_id, skill_name)VALUES($1, $2, $3)",
-    [id, workerId, skillName]
+    "INSERT INTO work_experience(id, worker_id, position, company, work_month, work_year, description)VALUES($1, $2, $3, $4, $5, $6, $7)",
+    [id, worker_id, position, company, work_month, work_year, description]
   );
 }
 

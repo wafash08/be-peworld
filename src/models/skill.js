@@ -1,9 +1,9 @@
 const pool = require("../config/db");
 
-const create = ({id, workerId, skillName})=>{
+const create = ({id, worker_id, skill_name})=>{
     return pool.query(
       "INSERT INTO skills(id, worker_id, skill_name)VALUES($1, $2, $3)",
-      [id, workerId, skillName]
+      [id, worker_id, skill_name]
     );
 }
 

@@ -40,10 +40,10 @@ const update = async (req, res, next) => {
   try {
     const email = req.decoded.email;
     const  { rows: [user] } = await users.findByEmail(email);
-    const { name, jobDesk, domicile, workplace, description } = req.body;
+    const { name, job_desk, domicile, workplace, description } = req.body;
     const data = {
       name,
-      jobDesk,
+      job_desk,
       domicile,
       workplace,
       description,
@@ -96,7 +96,10 @@ const selectAll = async (req, res, next) => {
     totalData,
     totalPage
   };
-  response(res, rows, 200, 'success get data workers', pagination)
+  // setTimeout(()=>{
+    response(res, rows, 200, 'success get data workers', pagination)
+  // }, 5000)
+ 
 };
 
 module.exports = {

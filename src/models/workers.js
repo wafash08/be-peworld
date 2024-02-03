@@ -16,10 +16,10 @@ const register = ({id, user_id, name, phone }) => {
   });
 };
 
-const update = ({ name, jobDesk, domicile, workplace, deskription }, id) => {
+const update = ({ name, job_desk, domicile, workplace, description }, id) => {
   return pool.query(
       "UPDATE workers SET name = $1, job_desk = $2, domicile = $3, workplace = $4, description = $5 WHERE user_id = $6", 
-      [name, jobDesk, domicile, workplace, deskription, id]
+      [name, job_desk, domicile, workplace, description, id]
     );
 };
 
