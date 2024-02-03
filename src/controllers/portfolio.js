@@ -2,9 +2,10 @@ const { v4: uuidv4 } = require("uuid");
 const createError = require("http-errors");
 const users = require("../models/users");
 const portfolio = require("../models/portfolio");
+const { response } = require("../helpers/common");
 const create = async (req, res, next) => {
   try {
-    const { application_name, link_repository, app_type, image } = req.body;
+    const { application_name, link_repository, application, image } = req.body;
     const email = req.decoded.email;
     const {
       rows: [user],
@@ -14,12 +15,12 @@ const create = async (req, res, next) => {
       worker_id: user.id,
       application_name,
       link_repository,
-      app_type,
+      application,
       image,
     };
     await portfolio.create(data);
     delete data.worker_id
-    response(res, data, 201, 'penambahan skill success')
+    response(res, data, 201, 'add portfolio success')
   } catch (error) {
     console.log(error)
     next(new createError.InternalServerError())
@@ -33,8 +34,11 @@ const selectAll = async (req, res, next) => {
       rows: [user],
     } = await users.findByEmail(email, { relation: "workers" });
     const {rows} = await portfolio.selectAll({worker_id:user.id })
-
-  } catch (error) {}
+    response(res, rows, 200, 'get portfolio success')
+  } catch (error) {
+    console.log(error)
+    next(new createError.InternalServerError())
+  }
 };
 
 const drop = async (req, res, next) => {

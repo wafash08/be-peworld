@@ -1,7 +1,7 @@
 const pool = require('../config/db')
 
-const create = ({id, worker_id, application_name, link_repository, app_type, image})=>{
- return pool.query("INSERT INTO portfolio(id, worker_id, application_name, link_repository, app_type, image)VALUES($1, $2, $3, $4, $5, $6)", [id, worker_id, application_name, link_repository, app_type, image])
+const create = ({id, worker_id, application_name, link_repository, application, image})=>{
+ return pool.query("INSERT INTO portfolio(id, worker_id, application_name, link_repository, application, image)VALUES($1, $2, $3, $4, $5, $6)", [id, worker_id, application_name, link_repository, application, image])
 }
 
 const drop = ({id})=>{
@@ -12,7 +12,7 @@ const drop = ({id})=>{
 }
 
 const selectAll = ({worker_id})=>{
-  return pool.query("SELECT id,  application_name, link_repository, app_type, image created_at, updated_at FROM portfolio WHERE worker_id = $1", [worker_id])
+  return pool.query("SELECT id,  application_name, link_repository, application, image created_at, updated_at FROM portfolio WHERE worker_id = $1", [worker_id])
 }
 
 module.exports = {
