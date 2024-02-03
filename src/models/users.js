@@ -1,7 +1,7 @@
 const pool = require('../config/db')
-const create = ({id, email, password, role_id}) => {
+const create = ({id, email, password, role}) => {
   return new Promise((resolve, reject) => {
-    pool.query('INSERT INTO users(id, email, password, role_id)VALUES($1, $2, $3, $4)', [id, email, password, role_id, ], (error, result) => {
+    pool.query('INSERT INTO users(id, email, password, role)VALUES($1, $2, $3, $4)', [id, email, password, role], (error, result) => {
       if (!error) {
         resolve(result)
       } else {
@@ -14,7 +14,7 @@ const findByEmail = (email, {relation} = {relation: ''}) => {
   console.log(relation);
   return new Promise((resolve, reject) => {
     pool.query(
-      `SELECT users.id AS user_id, users.email, users.role_id, users.password ${relation ? `, ${relation}.*`:''} FROM users ${relation ? ` JOIN ${relation} ON users.id = user_id`: ''} WHERE email = $1 `,
+      `SELECT users.id AS user_id, users.email, users.role, users.password ${relation ? `, ${relation}.*`:''} FROM users ${relation ? ` JOIN ${relation} ON users.id = user_id`: ''} WHERE email = $1 `,
       [email],
       (error, result) => {
         if (!error) {

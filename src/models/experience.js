@@ -16,9 +16,16 @@ const create = ({id, worker_id, position, company, work_month, work_year, descri
     [id, worker_id, position, company, work_month, work_year, description]
   );
 }
+const update = ({ position, company, work_month, work_year, description, updated_at}, id)=>{
+  return pool.query(
+    "UPDATE work_experience SET position = $1, company = $2, work_month = $3, work_year= $4, description = $5, updated_at = $6 WHERE id = $7",
+    [position, company, work_month, work_year, description, updated_at, id]
+  );
+}
 
 module.exports = {
   selectAll,
   drop,
-  create
+  create,
+  update
 }

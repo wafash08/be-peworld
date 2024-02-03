@@ -19,6 +19,7 @@ const register = async (req, res, next) => {
       id: uuidv4(),
       email,
       password: passwrodHash,
+      role: 'worker'
     };
     const worker = {
       id: uuidv4(),

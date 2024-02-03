@@ -5,5 +5,6 @@ const router = express.Router()
   router.post('/', protect, experienceController.create)
   router.get('/', protect, experienceController.selectAll)
   router.delete('/:id', protect, experienceController.drop)
+  router.put('/:id', protect, experienceController.update)
 
 module.exports = router
