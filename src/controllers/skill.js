@@ -43,9 +43,19 @@ const selectAll = async (req, res, next)=>{
     next(new createError.InternalServerError())
   }
 }
-
+const selectByWorker = async (req, res, next)=>{
+  try {
+    const id = req.params.id
+    const { rows }  = await skills.selectAll({id:id}) 
+    response(res, rows, 200, 'Get skill success')
+  } catch (error) {
+    console.log(error)
+    next(new createError.InternalServerError())
+  }
+}
 module.exports = {
   create,
   drop,
-  selectAll
+  selectAll,
+  selectByWorker
 }

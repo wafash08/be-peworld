@@ -16,6 +16,16 @@ const selectAll = async (req, res, next) => {
     next(new createError.InternalServerError());
   }
 };
+const selectByWorker = async (req, res, next) => {
+  try {
+    const id = req.params.id
+    const { rows } = await experience.selectAll({ worker_id: id });
+    response(res, rows, 201, "penambahan skill success");
+  } catch (error) {
+    console.log(error);
+    next(new createError.InternalServerError());
+  }
+};
 
 const create = async (req, res, next) => {
   try {
@@ -80,4 +90,5 @@ module.exports = {
   selectAll,
   drop,
   update,
+  selectByWorker
 };

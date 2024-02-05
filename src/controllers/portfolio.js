@@ -40,6 +40,16 @@ const selectAll = async (req, res, next) => {
     next(new createError.InternalServerError());
   }
 };
+const selectByWorker = async (req, res, next) => {
+  try {
+    const id = req.params.id
+    const { rows } = await portfolio.selectAll({ worker_id: id });
+    response(res, rows, 200, "get portfolio success");
+  } catch (error) {
+    console.log(error);
+    next(new createError.InternalServerError());
+  }
+};
 
 const drop = async (req, res, next) => {
   try {
@@ -75,5 +85,6 @@ module.exports = {
   create,
   selectAll,
   drop,
-  update
+  update,
+  selectByWorker
 };

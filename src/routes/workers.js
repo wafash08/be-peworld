@@ -5,6 +5,7 @@ const  {protect} = require('../middlewares/auth')
 
 router.post('/register', workerController.register)
 router.get('/', workerController.selectAll)
+router.get('/:id', workerController.detail)
 router.get('/profile',protect, workerController.profile)
 router.put('/profile',protect, workerController.update)
 

@@ -74,6 +74,23 @@ const profile = async (req, res, next)=>{
   }
 }
 
+const detail = async(req, res, next)=>{
+  try {
+    const id = req.params.id
+    console.log(id);
+    const  { rows: [worker] } = await workers.findOne({id})
+    if (!worker){
+      throw new Error('Worker not found')
+    }
+    response(res, worker, 200, 'get workers success')
+  } catch (error) {
+    console.log(error);
+    next(error)
+  }
+  
+
+}
+
 const selectAll = async (req, res, next) => {
   const page = parseInt(req.query.page) || 1;
   const limit = parseInt(req.query.limit) || 5;
@@ -107,5 +124,6 @@ module.exports = {
   register,
   update,
   selectAll,
-  profile
+  profile,
+  detail
 };

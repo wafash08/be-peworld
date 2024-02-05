@@ -27,6 +27,9 @@ const findAll= ()=>{
   return pool.query('SELECT * FROM workers')
 }
 
+const findOne = ({id})=>{
+  return pool.query("SELECT users.email,  workers.* FROM workers JOIN users ON workers.user_id = users.id WHERE workers.id = $1", [id])
+}
 const countWorkers = () => {
   return pool.query('SELECT COUNT(*) AS total FROM workers')
 }
@@ -35,5 +38,6 @@ module.exports = {
   register,
   update,
   findAll,
-  countWorkers
+  countWorkers,
+  findOne
 };
