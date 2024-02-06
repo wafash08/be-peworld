@@ -5,6 +5,7 @@ const protect = (req, res, next) => {
     let token;
     if ((req.headers.authorization && req.headers.authorization.startsWith('Bearer')) || req.cookies.token) {
       token =   req.cookies.token || req.headers.authorization.split(" ")[1];
+      console.log(token);
       // token = req.cookies.token
       // if(!token){
       //   return next(createError(400, 'server need token'))
