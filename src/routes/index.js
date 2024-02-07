@@ -7,6 +7,7 @@ const experienceRoute = require('./experience')
 const portfolioRoute = require('./portfolio')
 const recruiterRoute = require('./recruiter')
 const uploadRoute = require('./upload')
+const hireRoute = require('./hire')
 
 router.use('/auth', authRoute);
 router.use('/workers', workersRoute);
@@ -14,6 +15,7 @@ router.use('/recruiters', recruiterRoute)
 router.use('/skills', skillRoute)
 router.use('/experience', experienceRoute)
 router.use('/portfolio', portfolioRoute)
+router.use('/hire', hireRoute)
 router.use('/upload', uploadRoute)
 
 
