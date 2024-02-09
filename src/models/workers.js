@@ -23,15 +23,20 @@ const update = ({ name, job_desk, domicile, workplace, description }, id) => {
     );
 };
 
-const findAll= ()=>{
-  return pool.query('SELECT * FROM workers')
+const findAll= ({ limit,
+  offset,
+  search,
+  sort,
+  sortBy})=>{
+    console.log(sortBy);
+  return pool.query(`SELECT * FROM workers ${search ? `WHERE name ILIKE '%${search}%'`:''} ORDER BY ${sort} ${sortBy} LIMIT $1 OFFSET $2`, [limit, offset])
 }
 
 const findOne = ({id})=>{
   return pool.query("SELECT users.email,  workers.* FROM workers JOIN users ON workers.user_id = users.id WHERE workers.id = $1", [id])
 }
-const countWorkers = () => {
-  return pool.query('SELECT COUNT(*) AS total FROM workers')
+const countWorkers = ({search}) => {
+  return pool.query(`SELECT COUNT(*) AS total FROM workers ${search ? `WHERE name ILIKE '%${search}%'`:''}`)
 }
 
 module.exports = {

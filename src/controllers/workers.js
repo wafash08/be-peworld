@@ -94,8 +94,8 @@ const detail = async(req, res, next)=>{
 const selectAll = async (req, res, next) => {
   const page = parseInt(req.query.page) || 1;
   const limit = parseInt(req.query.limit) || 5;
-  const sort = req.query.sort || "name";
-  const sortBy = req.query.sortBy || "ASC";
+  const sort = req.query.sort || "created_at";
+  const sortBy = req.query.sortBy || "DESC";
   const search = req.query.search || "";
   const offset = (page - 1) * limit;
   const { rows } = await workers.findAll({

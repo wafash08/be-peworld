@@ -15,7 +15,7 @@ const drop = (id)=>{
 }
 
 const selectAll = ({id}) =>{
-  console.log(id);
+  // console.log(id);
   return pool.query("SELECT skills.id, skills.skill_name, skills.created_at, skills.updated_at FROM skills WHERE worker_id = $1", [id])
 }
 

@@ -11,7 +11,7 @@ const create = ({id, email, password, role}) => {
   })
 }
 const findByEmail = (email, {relation} = {relation: ''}) => {
-  console.log(relation);
+  // console.log(relation);
   return new Promise((resolve, reject) => {
     pool.query(
       `SELECT users.id AS user_id, users.email, users.role, users.password ${relation ? `, ${relation}.*`:''} FROM users ${relation ? ` JOIN ${relation} ON users.id = user_id`: ''} WHERE email = $1 `,
