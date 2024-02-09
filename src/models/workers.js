@@ -36,7 +36,7 @@ const findOne = ({id})=>{
   return pool.query("SELECT users.email,  workers.* FROM workers JOIN users ON workers.user_id = users.id WHERE workers.id = $1", [id])
 }
 const countWorkers = ({search}) => {
-  return pool.query(`SELECT COUNT(*) AS total FROM workers ${search ? `WHERE name ILIKE '%${search}%'`:''}`)
+  return pool.query(`SELECT COUNT(*) AS total FROM workers ${search ? `WHERE name ILIKE '%${search}%' OR job_desk ILIKE '%${search}%'`:''}`)
 }
 
 module.exports = {
