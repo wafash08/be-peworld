@@ -39,10 +39,21 @@ const countWorkers = ({search}) => {
   return pool.query(`SELECT COUNT(*) AS total FROM workers ${search ? `WHERE name ILIKE '%${search}%' OR job_desk ILIKE '%${search}%'`:''}`)
 }
 
+
+const SelectSkillWorker = ({id}) =>{
+  // console.log(id);
+  return pool.query({
+    rowMode: 'array',
+    text: "SELECT skills.skill_name FROM skills WHERE worker_id = $1", 
+    values: [id]
+  })
+}
+
 module.exports = {
   register,
   update,
   findAll,
   countWorkers,
-  findOne
+  findOne,
+  SelectSkillWorker
 };

@@ -98,6 +98,7 @@ const selectAll = async (req, res, next) => {
   const sortBy = req.query.sortBy || "DESC";
   const search = req.query.search || "";
   const offset = (page - 1) * limit;
+  let result = []
   const { rows } = await workers.findAll({
     limit,
     offset,
@@ -105,6 +106,19 @@ const selectAll = async (req, res, next) => {
     sort,
     sortBy,
   });
+  for(obj of rows){
+    const {rows: res} = await workers.SelectSkillWorker({id: obj.id})
+    const skills = res.map(([item])=>{
+      return item
+    })
+    result = [
+      ...result, 
+      {
+        ...obj, 
+        skills: skills
+      }
+    ]
+  }
   const { rows: [count] } = await workers.countWorkers({search})
   const totalData = parseInt(count.total)
   const totalPage = Math.ceil(totalData / limit)
@@ -115,7 +129,7 @@ const selectAll = async (req, res, next) => {
     totalPage
   };
   // setTimeout(()=>{
-    response(res, rows, 200, 'success get data workers', pagination)
+    response(res, result, 200, 'success get data workers', pagination)
   // }, 5000)
  
 };
