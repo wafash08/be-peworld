@@ -8,6 +8,7 @@ const cookieParser = require("cookie-parser");
 
 const app = express();
 const PORT = process.env.PORT || 5000;
+const corsOrigin = ["http://localhost:3000", "https://fe-blanja-team.vercel.app", "https://peworld-putrapr.vercel.app", "https://peworld-zeta.vercel.app"]
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -15,7 +16,7 @@ app.use(cookieParser());
 app.use(
   cors({
     credentials: true,
-    origin: "http://localhost:3000",
+    origin: corsOrigin,
   })
 );
 app.use(morgan("dev"));
