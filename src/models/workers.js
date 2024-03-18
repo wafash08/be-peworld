@@ -48,6 +48,12 @@ const SelectSkillWorker = ({id}) =>{
     values: [id]
   })
 }
+const updatePhoto = (urlPhoto, id)=>{
+  return pool.query(
+    "UPDATE workers SET photo = $1 WHERE user_id = $2", 
+    [urlPhoto, id]
+  );
+}
 
 module.exports = {
   register,
@@ -55,5 +61,6 @@ module.exports = {
   findAll,
   countWorkers,
   findOne,
-  SelectSkillWorker
+  SelectSkillWorker,
+  updatePhoto
 };

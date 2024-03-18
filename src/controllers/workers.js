@@ -4,6 +4,7 @@ const { v4: uuidv4 } = require("uuid");
 const workers = require("../models/workers");
 const users = require("../models/users");
 const fetch = require("node-fetch");
+const cloudinary = require("../utils/cloudinary");
 
 const { response } = require("../helpers/common");
 const register = async (req, res, next) => {
@@ -154,10 +155,27 @@ const selectAll = async (req, res, next) => {
   // }, 5000)
 };
 
+const updateFoto = async(req, res, next) =>{
+  try {
+    const email = req.decoded.email;
+    const {
+      rows: [user],
+    } = await users.findByEmail(email);
+
+    const result = await cloudinary.uploader.upload(req.file.path);
+    const urlPhoto = result.secure_url
+    await workers.updatePhoto(urlPhoto, user.user_id);
+    response(res, {photo: urlPhoto}, 200, "update photo profile workers success ");
+  } catch (error) {
+    console.log(error);
+    next(error);
+  }
+}
 module.exports = {
   register,
   update,
   selectAll,
   profile,
   detail,
+  updateFoto
 };
