@@ -56,7 +56,19 @@ const logout = async (req, res, next) => {
   res.clearCookie("token");
   commonHelper.response(res, null, 200, "Logout Success");
 };
+
+const checkRole = (req,res, next)=>{
+  try {
+    const {iat, exp, ...data} = req.decoded
+    commonHelper.response(res, {data}, 200, "check role success");
+  } catch (error) {
+    console.log(error);
+    next(error);
+  }
+}
+
 module.exports = {
   login,
   logout,
+  checkRole
 };
