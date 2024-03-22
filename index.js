@@ -8,7 +8,7 @@ const cookieParser = require("cookie-parser");
 
 const app = express();
 const PORT = process.env.PORT || 5000;
-const corsOrigin = ["http://localhost:3000", "https://fe-blanja-team.vercel.app", "https://peworld-putrapr.vercel.app", "https://peworld-zeta.vercel.app", "https://fwm17-sample-next.vercel.app", "https://fe-peworld-three.vercel.app", "https://peworld-next-js-xi.vercel.app"]
+const corsOrigin = ["http://localhost:3000", "https://fe-blanja-team.vercel.app", "https://peworld-putrapr.vercel.app", "https://peworld-zeta.vercel.app", "https://fwm17-sample-next.vercel.app", "https://fe-peworld-three.vercel.app", "https://peworld-next-js-xi.vercel.app", "https://peworld-app-kappa.vercel.app"]
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
