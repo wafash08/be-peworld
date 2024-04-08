@@ -1,7 +1,7 @@
 const pool = require("../config/db");
 
 const selectAll = ({worker_id}) =>{
-  return pool.query("SELECT id,  position, company, work_month, work_year, description created_at, updated_at FROM work_experience WHERE worker_id = $1", [worker_id])
+  return pool.query("SELECT id,  position, company, work_month, work_year, description, created_at, updated_at FROM work_experience WHERE worker_id = $1", [worker_id])
 }
 
 const drop = ({id})=>{
