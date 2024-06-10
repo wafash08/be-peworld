@@ -26,7 +26,8 @@ const corsOrigin =
   "https://peworlds-project.netlify.app",
   "https://peworlds-project.netlify.app",
   "https://crud-react-tailwind-o7f0z12yq-nizuma666s-projects.vercel.app",
-  "https://crud-react-tailwind-roan.vercel.app"
+  "https://crud-react-tailwind-roan.vercel.app",
+  "https://mama-recipe-food.vercel.app"
 ]
 
 app.use(express.json());
