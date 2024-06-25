@@ -4,7 +4,9 @@
   <img src="./assets/peworld-logo-purple.webp">
   <br>
   <br>
-  <a href="https://wafash-peworld-react.netlify.app/">View Demo</a>
+  <a href="https://wafash-peworld-react.netlify.app/">View Demo Front End</a>
+  <span>|</span>
+  <a href="https://fwm17-be-peword.vercel.app/">View Demo Back End</a>
 </div>
 
 ## Table of Contents
