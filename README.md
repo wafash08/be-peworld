@@ -12,7 +12,15 @@
 ## Table of Contents
 
 - [About](#about)
-- [Documentation](#documentation)
+- [Technologies Used](#technologies-used)
+- [Project Structure](#project-structure)
+- [Project Repository](#project-repository)
+- [Postman Documentation](#postman-documentation)
+- [Features](#features)
+- [Getting Started](#getting-started)
+- [Contributions](#contributions)
+- [License](#license)
+- [Contact](#contact)
 - [Related Projects](#related-projects)
 
 ## About
@@ -28,7 +36,13 @@ These RESTful APIs are built by [Muhammad Risano](https://github.com/muhammadris
 
 Explore the API by visiting the [Postman documentation](https://documenter.getpostman.com/view/7675329/2s9YysDhDY) and experience its full range of features.
 
-## Documentation
+## Technologies Used
+
+## Project Structure
+
+## Project Repository
+
+## Postman Documentation
 
 You can see the list of API and its example usage by clicking the link below
 
@@ -38,6 +52,16 @@ You can also visit the front end version and its repository that consumes these 
 
 - [Demo](https://wafash-peworld-react.netlify.app/)
 - [Front End Repository](https://github.com/wafash08/fwgo-peworld)
+
+## Features
+
+## Getting Started
+
+## Contributions
+
+## License
+
+## Contact
 
 ## Related Projects
 
