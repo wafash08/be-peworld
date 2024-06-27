@@ -66,7 +66,7 @@ The APIs are built with following technologies:
 
 This project consists of both frontend and backend repositories. You can find link of front end repositoy and the postman documentation below:
 
-- Front End Repository: [Peworld Front End](https://github.com/wafash08/be-peworld)
+- Front End Repository: [Peworld Front End](https://github.com/wafash08/fwgo-peworld)
 
 - [Postman Documentation](#postman-documentation)
 
@@ -74,7 +74,7 @@ This project consists of both frontend and backend repositories. You can find li
 
 You can see the list of API and its example usage by clicking the link below
 
-[![Run in Postman](https://run.pstmn.io/button.svg)](https://documenter.getpostman.com/view/31330000/2sA3QniuZG)
+[![Run in Postman](https://run.pstmn.io/button.svg)](https://documenter.getpostman.com/view/7675329/2s9YysDhDY)
 
 ## Features
 
